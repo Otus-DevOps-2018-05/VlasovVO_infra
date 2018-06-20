@@ -9,7 +9,7 @@ gcloud compute instances create reddit-app-2 \
   --machine-type=g1-small \
   --tags puma-server \
   --restart-on-failure \
-  --metadata-from-file startup-script='#!/bin/bash \
+  --metadata startup-script='#!/bin/bash \
 sudo apt update \
 sudo apt install -y ruby-full ruby-bundler build-essential \
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 \
