@@ -7,7 +7,7 @@ gcloud compute instances create reddit-app\
   --image-project=ubuntu-os-cloud \
   --machine-type=g1-small \
   --tags puma-server \
-  --restart-on-failure
+  --restart-on-failure \
   --metadata-from-file startup-script='#!/bin/bash
 sudo apt update
 sudo apt install -y ruby-full ruby-bundler build-essential
