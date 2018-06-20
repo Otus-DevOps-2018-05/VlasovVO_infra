@@ -1,4 +1,5 @@
 bastion_IP = 35.204.11.162
+
 someinternalhost_IP = 10.164.0.3
 
 gcloud compute instances create reddit-app\
@@ -32,4 +33,5 @@ gcloud compute firewall-rules create default-puma-server\
  --target-tags=puma-server
 
 testapp_IP= 35.204.231.87
+
 testapp_port = 9292
