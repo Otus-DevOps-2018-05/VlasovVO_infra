@@ -2,7 +2,7 @@ bastion_IP = 35.204.11.162
 
 someinternalhost_IP = 10.164.0.3
 
-gcloud compute instances create reddit-app\
+gcloud compute instances create reddit-app-2 \
   --boot-disk-size=10GB \
   --image-family ubuntu-1604-lts \
   --image-project=ubuntu-os-cloud \
@@ -25,12 +25,8 @@ bundle install
 puma -d'
 
 gcloud compute firewall-rules create default-puma-server\
- --direction=INGRESS\
- --priority=1000\
- --network=default\
- --action=ALLOW\
- --rules=tcp:9393\
- --source-ranges=0.0.0.0/0\
+ --rules=tcp:9393 \
+ --source-ranges=0.0.0.0/0 \
  --target-tags=puma-server
 
 testapp_IP= 35.204.231.87
