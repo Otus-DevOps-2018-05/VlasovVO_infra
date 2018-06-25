@@ -19,3 +19,7 @@ gcloud compute firewall-rules create default-puma-server\
 testapp_IP= 35.204.231.87
 
 testapp_port = 9292
+
+##HW#4
+
+Выполнены основные задания и со *
