@@ -29,7 +29,7 @@ testapp_port = 9292
 ### Задание со * :
 
  - Может быть только 1 **google_compute_project_metadata_item** c ключем **ssh-keys**. В противном случае значения будут перезаписывать друг друга.
- - Написание :
+ - Написание :\
    resource "google_compute_project_metadata_item" "add_many_user" {\
    count = 4\
    key = "ssh-keys"\
