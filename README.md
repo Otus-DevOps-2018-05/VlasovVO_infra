@@ -56,4 +56,3 @@ testapp_port = 9292
 
  >Error: Error locking state: Error acquiring the state lock: writing "gs://storage-bucket-vvo1/terraform/stage/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNotMet
  - Не теста ради, по случайности потерялось интернет соединение при выполнении команды **terraform** **apply**. В итоге не выполнившись до конца команда в GCS остался lock файл, который не позволял что либо сделать. Лечилось ручным удалением инстансов и ресурсов в GCP, повторным выполнением **terraform** **apply** c флагом **lock=false** и удалнием lock файла из GCS. 
- 
