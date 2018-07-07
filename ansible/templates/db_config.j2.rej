@@ -1,4 +1,0 @@
-diff a/ansible/templates/db_config.j2 b/ansible/templates/db_config.j2	(rejected hunks)
-@@ -0,0 +1 @@
-+DATABASE_URL={{ db_host }}
-\ No newline at end of file

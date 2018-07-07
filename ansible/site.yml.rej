@@ -1,7 +1,0 @@
-diff a/ansible/site.yml b/ansible/site.yml	(rejected hunks)
-@@ -0,0 +1,4 @@
-+---
-+- include: db.yml
-+- include: app.yml
-+- include: deploy.yml
-\ No newline at end of file
