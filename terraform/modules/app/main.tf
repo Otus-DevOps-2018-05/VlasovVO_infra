@@ -1,16 +1,16 @@
-# data "template_file" "pumaservice" {
-#   template = "${file("${path.module}/files/puma.service.tpl")}"
+data "template_file" "pumaservice" {
+  template = "${file("${path.module}/files/puma.service.tpl")}"
 
-#   vars {
-#     db_addr = "${var.db_addr}"
-#   }
-# }
+  vars {
+    db_addr = "${var.db_addr}"
+  }
+}
 
 resource "google_compute_instance" "app" {
   name         = "reddit-app"
   machine_type = "g1-small"
   zone         = "${var.zone}"
-  tags         = ["reddit-app", "app"]
+  tags         = ["reddit-app"]
 
   boot_disk {
     initialize_params {

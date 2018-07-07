@@ -1,0 +1,9 @@
+diff a/ansible/ansible.cfg b/ansible/ansible.cfg	(rejected hunks)
+@@ -1,5 +1,6 @@
+ [defaults]
+-inventory = ./inventory.sh
++#inventory = ./inventory.sh
++inventory = ./gce.py
+ remote_user = appuser
+ private_key_file = ~/.ssh/appuser
+ host_key_checking = False

@@ -1,16 +1,16 @@
-# data "template_file" "mongod_conf" {
-#   template = "${file("${path.module}/files/mongod.conf.tpl")}"
+data "template_file" "mongod_conf" {
+  template = "${file("${path.module}/files/mongod.conf.tpl")}"
 
-#   vars {
-#     mongo_addr = "0.0.0.0"
-#   }
-# }
+  vars {
+    mongo_addr = "0.0.0.0"
+  }
+}
 
 resource "google_compute_instance" "db" {
   name         = "reddit-db"
   machine_type = "g1-small"
   zone         = "${var.zone}"
-  tags         = ["reddit-db", "db"]
+  tags         = ["reddit-db"]
 
   boot_disk {
     initialize_params {
