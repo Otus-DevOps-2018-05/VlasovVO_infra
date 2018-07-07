@@ -1,16 +1,16 @@
-data "template_file" "pumaservice" {
-  template = "${file("${path.module}/files/puma.service.tpl")}"
+# data "template_file" "pumaservice" {
+#   template = "${file("${path.module}/files/puma.service.tpl")}"
 
-  vars {
-    db_addr = "${var.db_addr}"
-  }
-}
+#   vars {
+#     db_addr = "${var.db_addr}"
+#   }
+# }
 
 resource "google_compute_instance" "app" {
   name         = "reddit-app"
   machine_type = "g1-small"
   zone         = "${var.zone}"
-  tags         = ["reddit-app"]
+  tags         = ["reddit-app", "app"]
 
   boot_disk {
     initialize_params {
@@ -39,21 +39,21 @@ resource "google_compute_instance" "app" {
   }
 
   # Запустим фронт
-   provisioner "file" {
-    content     = "${data.template_file.pumaservice.rendered}"
-    destination = "/tmp/puma.service"
-   }
-  provisioner "file" {
-    source      = "${path.module}/files/deploy.sh"
-    destination = "/tmp/deploy.sh"
-  }
+  #  provisioner "file" {
+  #   content     = "${data.template_file.pumaservice.rendered}"
+  #   destination = "/tmp/puma.service"
+  #  }
+  #  provisioner "file" {
+  #   source      = "${path.module}/files/deploy.sh"
+  #   destination = "/tmp/deploy.sh"
+  # }
 
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /tmp/deploy.sh",
-      "/tmp/deploy.sh",
-    ]
-  }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "chmod +x /tmp/deploy.sh",
+  #     "/tmp/deploy.sh",
+  #   ]
+  # }
 }
 
 resource "google_compute_address" "app_ip" {

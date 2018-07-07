@@ -1,16 +1,16 @@
-data "template_file" "mongod_conf" {
-  template = "${file("${path.module}/files/mongod.conf.tpl")}"
+# data "template_file" "mongod_conf" {
+#   template = "${file("${path.module}/files/mongod.conf.tpl")}"
 
-  vars {
-    mongo_addr = "0.0.0.0"
-  }
-}
+#   vars {
+#     mongo_addr = "0.0.0.0"
+#   }
+# }
 
 resource "google_compute_instance" "db" {
   name         = "reddit-db"
   machine_type = "g1-small"
   zone         = "${var.zone}"
-  tags         = ["reddit-db"]
+  tags         = ["reddit-db", "db"]
 
   boot_disk {
     initialize_params {
@@ -33,17 +33,17 @@ resource "google_compute_instance" "db" {
     private_key = "${file(var.private_key_path)}"
   }
 
-  provisioner "file" {
-    content     = "${data.template_file.mongod_conf.rendered}"
-    destination = "/tmp/mongod.conf"
-  }
+  # provisioner "file" {
+  #   content     = "${data.template_file.mongod_conf.rendered}"
+  #   destination = "/tmp/mongod.conf"
+  # }
 
-  provisioner "remote-exec" {
-    inline = [
-      "sudo mv /tmp/mongod.conf /etc/mongod.conf",
-      "sudo systemctl restart mongod",
-    ]
-  }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "sudo mv /tmp/mongod.conf /etc/mongod.conf",
+  #     "sudo systemctl restart mongod",
+  #   ]
+  # }
 
 }
 
