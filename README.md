@@ -23,3 +23,22 @@ testapp_port = 9292
 ## HW#5
 
 Выполнены основные задания и со *
+
+## HW#6
+
+### Задание со * :
+
+ - Может быть только 1 **google_compute_project_metadata_item** c ключем **ssh-keys**. В противном случае значения будут перезаписывать друг друга.
+ - Написание :\
+   resource "google_compute_project_metadata_item" "add_many_user" {\
+   count = 4\
+   key = "ssh-keys"\
+   value = "appuser-${count.index + 1}:${file("\~/.ssh/appuser.pub")}\
+  Не эквивалентно:\
+   resource "google_compute_project_metadata_item" "add_many_user" {\
+   key = "ssh-keys"\
+   value = "appuser1:${file("\~/.ssh/appuser.pub")}appuser2:${file(\~/.ssh/appuser.pub")}appuser3:${file("\~/.ssh/appuser.pub")}appuser4:${file("\~/.ssh/appuser.pub")}"\
+  В первом случае создается 4 **google_compute_project_metadata_item**, которые перезаписывают друг друга.
+ - При добавлении ssh ключа через web интерфейс и выполнении команды **terraform** **apply** ssh ключ будет удален, т.к. его описание не описано в файле **main.tf**
+### Заданиие ** :
+ В обоих инстансах своя БД
