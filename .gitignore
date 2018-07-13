@@ -4,4 +4,4 @@ packer/variables.json
 *.tfstate.backup
 *.tfvars
 .terraform/
-
+infra-8961fe780fcf.json
