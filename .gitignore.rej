@@ -1,8 +1,0 @@
-diff a/.gitignore b/.gitignore	(rejected hunks)
-@@ -4,4 +4,5 @@
- *.tfstate.backup
- *.tfvars
- .terraform/
--
-+*.retry
-+infra-8961fe780fcf.json
