@@ -4,4 +4,4 @@ packer/variables.json
 *.tfstate.backup
 *.tfvars
 .terraform/
-ansible/infra-8961fe780fcf.json
+ansible/infra-*.json
