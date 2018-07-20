@@ -1,5 +1,9 @@
  {
         "source_image_family": "ubuntu-1604-lts",
-        "project_id": "fresh-office-******"
+        "project_id": "fresh-office-******",
+        "ssh_username": "any_username",
+        "image_descriprion": "very_impotant_image",
+        "disk_type": "pd_standart",
+        "tags": "tags_one",
+        "network": "default"
     }
-
