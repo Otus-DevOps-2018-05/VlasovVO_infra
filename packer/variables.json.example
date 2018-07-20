@@ -2,7 +2,7 @@
         "source_image_family": "ubuntu-1604-lts",
         "project_id": "fresh-office-******",
         "ssh_username": "any_username",
-        "image_descriprion": "very_impotant_image",
+        "image_descriprion": "very_impotants_image",
         "disk_type": "pd_standart",
         "tags": "tags_one",
         "network": "default"
