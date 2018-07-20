@@ -52,7 +52,7 @@ testapp_port = 9292
 ### Заданиие ** :
  В обоих инстансах своя БД
 
-##HW#7
+## HW#7
 
 ### Задание со *:
 
@@ -79,7 +79,7 @@ testapp_port = 9292
 
 В качестве dinamic inventory использовал gce.py. Для настройки его используется файл gce.ini в котором указывается service account (Создается в разделе **IAM & admin > service account**) и Json файл с Service account key(Создается и скачивается в разделе **APIs & Services > Credentials**)
 
-##HW#10
+## HW#10
 
 Основное задание:
 
