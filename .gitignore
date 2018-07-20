@@ -4,7 +4,6 @@ packer/variables.json
 *.tfstate.backup
 *.tfvars
 .terraform/
+ansible/infra-*.json
 jdauphant.nginx
 vault.key
-infra-*.json
-
