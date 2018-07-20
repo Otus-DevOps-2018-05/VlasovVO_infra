@@ -6,4 +6,5 @@ packer/variables.json
 .terraform/
 jdauphant.nginx
 vault.key
+infra-*.json
 

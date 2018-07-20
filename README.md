@@ -1,3 +1,7 @@
+VlasovVO build status:
+
+[![Build Status](https://travis-ci.com/Otus-DevOps-2018-05/VlasovVO_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-05/VlasovVO_infra)
+
 bastion_IP = 35.204.11.162
 
 someinternalhost_IP = 10.164.0.3
@@ -56,3 +60,26 @@ testapp_port = 9292
 
  >Error: Error locking state: Error acquiring the state lock: writing "gs://storage-bucket-vvo1/terraform/stage/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNotMet
  - Не теста ради, по случайности потерялось интернет соединение при выполнении команды **terraform** **apply**. В итоге не выполнившись до конца команда в GCS остался lock файл, который не позволял что либо сделать. Лечилось ручным удалением инстансов и ресурсов в GCP, повторным выполнением **terraform** **apply** c флагом **lock=false** и удалнием lock файла из GCS. 
+
+##HW#8
+
+Основное задание:
+
+- Перенесли созданные плейбуки в роли
+- Создали отдельные окружения
+- Подключили компьюнити роль nginx 
+
+Задание * (Использование динамического inventory для prod и Stage окружений):
+
+- В каждом окружении добавили файлы **gce.ini** и **gce.py**. Внесли свои параметры в файл ini
+- Json ключ можно хранить вне репозитория и ссылаться на него, что бы не закоммитить
+
+Задание ** (Настройка travis.yml):
+
+- Добавлены travis тесты:
+
+> packer validate - all
+>terraform validate, tflint - prod,stage
+>ansible-lint - all playbooks
+
+- Добавлен статус билда в README.md
