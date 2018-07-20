@@ -96,8 +96,8 @@ testapp_port = 9292
 
 - Добавлены travis тесты:
 
-> packer validate - all
->terraform validate, tflint - prod,stage
->ansible-lint - all playbooks
+> packer validate - all\
+> terraform validate, tflint - prod,stage\
+> ansible-lint - all playbooks\
 
 - Добавлен статус билда в README.md
