@@ -1,3 +1,7 @@
+VlasovVO build status:
+
+[![Build Status](https://travis-ci.com/Otus-DevOps-2018-05/VlasovVO_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-05/VlasovVO_infra)
+
 bastion_IP = 35.204.11.162
 
 someinternalhost_IP = 10.164.0.3
@@ -59,7 +63,7 @@ testapp_port = 9292
 
 ## HW#8
 
- ### Основное задание:
+### Основное задание:
 
   Обьяснение ситуации с выполнение playbook-а до удаление каталога и после:
 
@@ -74,3 +78,26 @@ testapp_port = 9292
 ## HW#9
 
 В качестве dinamic inventory использовал gce.py. Для настройки его используется файл gce.ini в котором указывается service account (Создается в разделе **IAM & admin > service account**) и Json файл с Service account key(Создается и скачивается в разделе **APIs & Services > Credentials**)
+
+## HW#10
+
+Основное задание:
+
+- Перенесли созданные плейбуки в роли
+- Создали отдельные окружения
+- Подключили компьюнити роль nginx 
+
+Задание * (Использование динамического inventory для prod и Stage окружений):
+
+- В каждом окружении добавили файлы **gce.ini** и **gce.py**. Внесли свои параметры в файл ini
+- Json ключ можно хранить вне репозитория и ссылаться на него, что бы не закоммитить
+
+Задание ** (Настройка travis.yml):
+
+- Добавлены travis тесты:
+
+> packer validate - all\
+> terraform validate, tflint - prod,stage\
+> ansible-lint - all playbooks
+
+- Добавлен статус билда в README.md
