@@ -101,3 +101,66 @@ testapp_port = 9292
 > ansible-lint - all playbooks
 
 - Добавлен статус билда в README.md
+
+## HW#11
+
+###Основное задание (настройка Vagrant):
+
+- Установили Vagrant, использовали Virtual Box в качестве провайдера.
+
+Для корректного запуска VM на WSL отключается серийный порт: 
+> v.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
+Без данного параметра VM не запустится
+
+- Доработали Ansible роли для подключения их в Vagrant
+
+###Доп. задание Nginx:
+
+Для корректной работы nginx необходимо скорректировать файл roles\app\vars\main.yml добавив строки:
+```
+nginx_sites:
+  default:
+    - listen 80
+    - server_name reddit
+    - |
+      location / {
+        proxy_pass http://127.0.0.1:9292;
+      }
+```
+### Основное задание (Molecule and Testinfra)
+
+- Устанавливаем molecule, testinfra, python-vagrant
+- Добавляем тесты, используя Testinfra
+- В файле конфигурации VM для запуска в WSL добавляем строки:
+  ```
+  platforms:
+    - name: instance
+      box: ubuntu/xenial64
+      provider_raw_config_args: 
+      - "customize [ 'modifyvm', :id, '--uartmode1', 'disconnected' ]"
+  ```
+- Вносим изменения в playbook.yml, прогоняем тест
+- Добавляем тест на проверку порта 27017:
+  ```
+  def test_mongo_listen_port(host):
+    assert host.socket("tcp://0.0.0.0:27017").is_listening
+  ```
+- Исправляем **packer_app.yml** и **packer_db.yml** для запуска с помощью ролей app и db соотвественно.
+  Так же вносим изменения в шаблоны packer указывая теги и ссылку на роли:
+  ```
+  "extra_arguments": ["--tags", "ruby"],
+  "ansible_env_vars": ["ANSIBLE_ROLES_PATH={{ pwd }}/ansible/roles"]
+  ```
+### Задание со * (Вынесение роли DB)
+
+- Выносим роль в отдельный репозиторий:
+  https://github.com/VlasovVO/DevOps_role_db
+  Подключаем репу в оба окружения в файле requirements.txt:
+  ```
+  - src: git+https://github.com/VlasovVO/DevOps_role_db
+  version: master
+  name: db
+  scm: git
+  ```
+- Подключаем Travis, вносим изменения в molecule.yml для запуска в GCE
+- Добавил оповещения Travis в Slack по новой репе
